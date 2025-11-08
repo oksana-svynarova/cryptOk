@@ -1,5 +1,5 @@
-import CoinsList from '../CoinsList/CoinsList';
-import './CoinsSection.css';
+import CoinsList from "../CoinsList/CoinsList";
+import "./CoinsSection.css";
 
 const CoinsSection = ({
   title,
@@ -19,12 +19,12 @@ const CoinsSection = ({
   }) => {
 
   const showCoins = () => {
-    const coinsList = document.querySelector('.coins-list');
+    const coinsList = document.querySelector(".coins-list");
     if (coinsList) {
       let heightCoinsList = coinsList.clientHeight;
       const newHeight = heightCoinsList + 400;
 
-      coinsList.style.height = newHeight + 'px';
+      coinsList.style.height = newHeight + "px";
 
       if (newHeight >= 22500 && onHideLoadMore) {
         onHideLoadMore();
@@ -38,7 +38,7 @@ const CoinsSection = ({
 
   return (
     <section className={`section list ${className}`}>
-      <div className='section__header'>
+      <div className="section__header">
         <h2 className="section__title">{title}</h2>
         <input
           type="text"
@@ -48,14 +48,14 @@ const CoinsSection = ({
           onChange={(e) => setFilterName(e.target.value)}
         />
       </div>
-      <div className='sort-wrapper flex-container'>
+      <div className="sort-wrapper flex-container">
         {sortHeaders.map(({ label, key }) =>
           <button
             key={key}
             onClick={() => sortCoins(key)}
-            className='btn-sort'>
+            className="btn-sort">
             {label}
-            {sortConfig.key === key && (sortConfig.asc ? ' ↑' : ' ↓')}
+            {sortConfig.key === key && (sortConfig.asc ? " ↑" : " ↓")}
           </button>)}
       </div>
       <CoinsList

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
-import './CoinChart.css'
+import "./CoinChart.css"
 
 function CoinChart({ coinId }) {
   const [chartData, setChartData] = useState([]);
@@ -93,7 +93,7 @@ function CoinChart({ coinId }) {
       background: "var(--color-bg)",
       toolbar: { show: false },
       fontFamily: "inherit",
-      animations: { enabled: true, easing: 'easeinout', speed: 800 },
+      animations: { enabled: true, easing: "easeinout", speed: 800 },
     },
     plotOptions: {
       candlestick: {

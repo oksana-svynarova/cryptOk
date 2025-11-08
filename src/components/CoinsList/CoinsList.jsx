@@ -1,5 +1,5 @@
-import CoinItem from '../CoinItem/CoinItem';
-import './CoinsList.css';
+import CoinItem from "../CoinItem/CoinItem";
+import "./CoinsList.css";
 
 function CoinsList({ coins, loading, watchlist, onToggleWatchlist }) {
    return (

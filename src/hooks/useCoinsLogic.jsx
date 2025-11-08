@@ -1,26 +1,26 @@
-import { useEffect, useState, useCallback, useMemo } from 'react';
-import axios from 'axios';
+import { useEffect, useState, useCallback, useMemo } from "react";
+import axios from "axios";
 
 const useCoinsLogic = () => {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [sortConfig, setSortConfig] = useState({ key: 'market_cap', asc: false });
-  const [filterName, setFilterName] = useState('');
+  const [sortConfig, setSortConfig] = useState({ key: "market_cap", asc: false });
+  const [filterName, setFilterName] = useState("");
   const [watchlist, setWatchlist] = useState(() => {
-    const saved = localStorage.getItem('watchlist');
+    const saved = localStorage.getItem("watchlist");
     return saved ? JSON.parse(saved) : [];
   });
   const [visibleCoinsCount, setVisibleCoinsCount] = useState(10);
 
   const sortHeaders = [
-    { label: 'Name', key: 'name' },
-    { label: 'Price', key: 'current_price' },
-    { label: 'Cng (24H)', key: 'price_change_percentage_24h' },
-    { label: 'Volume', key: 'total_volume' },
-    { label: 'Market Cap', key: 'market_cap' },
+    { label: "Name", key: "name" },
+    { label: "Price", key: "current_price" },
+    { label: "Cng (24H)", key: "price_change_percentage_24h" },
+    { label: "Volume", key: "total_volume" },
+    { label: "Market Cap", key: "market_cap" },
   ];
 
-  const WATCHLIST_SORT_KEY = 'watchlistSortConfig';
+  const WATCHLIST_SORT_KEY = "watchlistSortConfig";
 
   const [watchlistSortConfig, setWatchlistSortConfig] = useState(() => {
     const savedConfig = localStorage.getItem(WATCHLIST_SORT_KEY);
@@ -28,14 +28,14 @@ const useCoinsLogic = () => {
   });
 
   useEffect(() => {
-    const savedData = localStorage.getItem('coinsData');
+    const savedData = localStorage.getItem("coinsData");
     if (savedData) {
       const parsed = JSON.parse(savedData);
       setCoins(parsed.coins);
       setSortConfig(parsed.sortConfig);
       setLoading(false);
     } else {
-      const URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1';
+      const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1";
       const fetchCoins = async () => {
         try {
           const response = await axios.get(URL);
@@ -55,7 +55,7 @@ const useCoinsLogic = () => {
       const sortState = {
         coins, sortConfig,
       };
-      localStorage.setItem('coinsData', JSON.stringify(sortState));
+      localStorage.setItem("coinsData", JSON.stringify(sortState));
     }
   }, [coins, sortConfig]);
 
@@ -66,7 +66,7 @@ const useCoinsLogic = () => {
       return [...arrayToSort].sort((a, b) => {
         const valA = a[key];
         const valB = b[key];
-          if (typeof valA === 'string') {
+          if (typeof valA === "string") {
             return asc ? valA.localeCompare(valB) : valB.localeCompare(valA);
           }
         return asc ? valA - valB : valB - valA;
@@ -108,11 +108,11 @@ const useCoinsLogic = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('watchlist', JSON.stringify(watchlist));
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
   }, [watchlist]);
 
   const filteredCoins = useMemo(() => {
-    return filterName.trim() === ''
+    return filterName.trim() === ""
       ? coins
       : coins.filter((coin) =>
         coin.name.toLowerCase().includes(filterName.toLowerCase()));

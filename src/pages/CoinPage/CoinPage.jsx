@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import useCoinsLogic from "../../hooks/useCoinsLogic";
 import CoinChart from "../../components/CoinChart/CoinChart";
-import './CoinPage.css';
+import { ArrowRising } from "../../assets/icons/ArrowRising";
+import { ArrowFalling } from "../../assets/icons/ArrowFalling";
+import "./CoinPage.css";
 
 function CoinPage() {
   const { id } = useParams();
@@ -23,7 +25,7 @@ function CoinPage() {
 
   const formatVolume = (value) => {
     const numberValue = Number(value);
-    if (isNaN(numberValue) || numberValue <= 0) return '0.00';
+    if (isNaN(numberValue) || numberValue <= 0) return "0.00";
 
     if (value >= 1_000_000_000) {
       return `${(value / 1_000_000_000).toFixed(2)}B`;
@@ -37,8 +39,8 @@ function CoinPage() {
     return `${value.toFixed(2)}`;
   };
 
- const changeClass = coin.price_change_percentage_24h >= 0 ? 'rising' : 'falling';
- const changeClassAtn = coin.ath_change_percentage >= 0 ? 'rising' : 'falling';
+ const changeClass = coin.price_change_percentage_24h >= 0 ? "rising" : "falling";
+ const changeClassAtn = coin.ath_change_percentage >= 0 ? "rising" : "falling";
 
   return (
     <section className="section coin-page">
@@ -59,14 +61,16 @@ function CoinPage() {
                 (coin.current_price > 0 && coin.current_price < 0.0001)
                 ? coin.current_price?.toExponential(3)
                 : coin.current_price?.toFixed(2)
-                ?? '0.00'
+                ?? "0.00"
               }
             </p>
             <p className={`coin-${changeClass}`}>
-              <svg className="change-icon" width="9" height="11">
-                <use href={`/sprite.svg#arrow-${changeClass}`}></use>
-              </svg>
-              {Math.abs(coin.price_change_percentage_24h?.toFixed(2)) ?? '0.00'}%
+              {changeClass === "rising" ? (
+                <ArrowRising className="change-icon" width={9} height={11} />
+              ) : (
+                <ArrowFalling className="change-icon" width={9} height={10} />
+              )}
+              {Math.abs(coin.price_change_percentage_24h?.toFixed(2)) ?? "0.00"}%
               <span className="change-amount">({coin.price_change_24h?.toFixed(2)} $)</span>
             </p>
           </div>
@@ -100,14 +104,16 @@ function CoinPage() {
                 (coin.ath > 0 && coin.ath < 0.0001)
                 ? coin.ath?.toExponential(3)
                 : coin.ath?.toFixed(2)
-                ?? '0.00'
+                ?? "0.00"
               }
             </p>
             <p className={`coin-${changeClassAtn}`}>
-              <svg className="change-icon" width="9" height="11">
-                <use href={`/sprite.svg#arrow-${changeClassAtn}`}></use>
-              </svg>
-              {Math.abs(coin.ath_change_percentage?.toFixed(2)) ?? '0.00'}%
+              {changeClassAtn === "rising" ? (
+                <ArrowRising className="change-icon" width={9} height={11} />
+              ) : (
+                <ArrowFalling className="change-icon" width={9} height={10} />
+              )}
+              {Math.abs(coin.ath_change_percentage?.toFixed(2)) ?? "0.00"}%
             </p>
           </div>
         </div>

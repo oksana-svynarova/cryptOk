@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import './CoinItem.css'
+import { ArrowRising } from "../../assets/icons/ArrowRising";
+import { ArrowFalling } from "../../assets/icons/ArrowFalling";
+import "./CoinItem.css"
 
 function CoinItem({ coin, isInWatchlist, onToggleWatchlist }) {
-  const changeClass = coin.price_change_percentage_24h >= 0 ? 'rising' : 'falling';
+  const changeClass = coin.price_change_percentage_24h >= 0 ? "rising" : "falling";
   const navigate = useNavigate();
 
   const formatVolume = (value) => {
     const numberValue = Number(value);
-    if (isNaN(numberValue) || numberValue <= 0) return '0.00 $';
+    if (isNaN(numberValue) || numberValue <= 0) return "0.00 $";
 
     if (value >= 1_000_000_000) {
       return `${(value / 1_000_000_000).toFixed(2)}B $`;
@@ -25,8 +27,8 @@ function CoinItem({ coin, isInWatchlist, onToggleWatchlist }) {
     <li className={`coin flex-container ${changeClass}`}
       onClick={() => navigate(`/coin/${coin.symbol}`, { state: { coin } })}
     >
-      <button className={`watchlist-btn ${isInWatchlist ? 'active' : ''}`}
-        title={`${isInWatchlist ? 'Delete from' : 'Add to'} Watchlist`}
+      <button className={`watchlist-btn ${isInWatchlist ? "active" : ""}`}
+        title={`${isInWatchlist ? "Delete from" : "Add to"} Watchlist`}
         onClick={(e) => {
           e.stopPropagation();
           onToggleWatchlist();
@@ -46,13 +48,15 @@ function CoinItem({ coin, isInWatchlist, onToggleWatchlist }) {
         (coin.current_price > 0 && coin.current_price < 0.0001)
         ? coin.current_price?.toExponential(3)
         : coin.current_price?.toFixed(2)
-        ?? '0.00'
+        ?? "0.00"
       } $</p>
       <p className="coin__change">
-        {coin.price_change_percentage_24h?.toFixed(2) ?? '0.00'}%
-        <svg className="change__icon" width="9" height="11">
-          <use href={`/sprite.svg#arrow-${changeClass}`}></use>
-        </svg>
+        {coin.price_change_percentage_24h?.toFixed(2) ?? "0.00"}%
+        {changeClass === "rising" ? (
+          <ArrowRising className="change__icon" width={9} height={11} />
+        ) : (
+          <ArrowFalling className="change__icon" width={9} height={10} />
+        )}
         <span className="change__term">24H</span>
       </p>
       <p className="coin__vol">VOL {formatVolume(coin.total_volume)}</p>
@@ -62,8 +66,8 @@ function CoinItem({ coin, isInWatchlist, onToggleWatchlist }) {
             e.stopPropagation();
             navigate(`/coin/${coin.symbol}`, { state: { coin } });
         }}>
-        <svg className="icon chart-btn__icon" width="24" height="18">
-          <use href="/sprite.svg#arrow-chart"></use>
+        <svg className="icon chart-btn__icon" width="24" height="18" viewBox="0 0 24 18">
+          <path d="M-8.26528e-07 9L22 9M22 9L14.3 1M22 9L14.3 17" fill="none" stroke="currentColor" strokeWidth="2"/>
         </svg>
       </button>
     </li>

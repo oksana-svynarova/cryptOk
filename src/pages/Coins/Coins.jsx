@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import useCoinsLogic from '../../hooks/useCoinsLogic';
-import CoinsSection from '../../components/CoinsSection/CoinsSection';
+import { useState } from "react";
+import useCoinsLogic from "../../hooks/useCoinsLogic";
+import CoinsSection from "../../components/CoinsSection/CoinsSection";
 
 function Coins() {
   const {

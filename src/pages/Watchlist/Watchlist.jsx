@@ -1,6 +1,6 @@
-import { useMemo, useEffect } from 'react';
-import useCoinsLogic from '../../hooks/useCoinsLogic';
-import CoinsSection from '../../components/CoinsSection/CoinsSection';
+import { useMemo, useEffect } from "react";
+import useCoinsLogic from "../../hooks/useCoinsLogic";
+import CoinsSection from "../../components/CoinsSection/CoinsSection";
 
 function Watchlist() {
   const {
@@ -21,7 +21,7 @@ function Watchlist() {
   }, [allWatchlistCoins, watchlistSortConfig, performSorting]);
 
   const filteredWatchlist = useMemo(() => {
-    return filterName.trim() === ''
+    return filterName.trim() === ""
       ? sortedWatchlist
       : sortedWatchlist.filter((coin) =>
           coin.name.toLowerCase().includes(filterName.toLowerCase()));
