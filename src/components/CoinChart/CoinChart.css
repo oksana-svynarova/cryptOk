@@ -1,0 +1,32 @@
+.btn-days-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  margin: 10px;
+}
+
+.btn-days {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-days:hover,
+.btn-days.active {
+  border-bottom: 2px solid var(--hover-color);
+}
+
+.day-symbol {
+  color: var(--hover-color);
+}
+
+.chart-loading,
+.chart-error {
+  text-align: center;
+  margin-top: 50px;
+}

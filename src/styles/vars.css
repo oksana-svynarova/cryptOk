@@ -1,0 +1,38 @@
+:root {
+  --container-width: 1440px;
+
+  --font-family-main: "Kanit", sans-serif;
+  --font-size-main: 16px;
+  --font-weight-main: 400;
+  --line-height-main: 24px;
+
+  --font-family-title: "Cinzel Decorative", serif;
+
+  --text-color-main: #ffffff;
+  --text-color-rising: #7af7ff;
+  --text-color-falling: #ff9d92;
+
+  --color-bg: #171717;
+  --border-color: #454545;
+
+  --hover-color: #a070ff;
+
+
+  --color-chart1: #4dd4ac;
+  --color-chart2: #ff3f81;
+  --color-chart3: #6a5dff;
+
+  --coin-bg-color-start: #2b2b2b;
+  --coin-bg-color-end: #000000;
+}
+
+.light {
+  --text-color-main: #171717;
+  --color-bg: #fafafa;
+
+  --coin-bg-color-start: #ffffff;
+  --coin-bg-color-end: #d9d9d9;
+
+  --text-color-rising: #009fbf;
+  --text-color-falling: #ff7e73;
+}

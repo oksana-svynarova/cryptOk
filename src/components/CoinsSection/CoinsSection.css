@@ -1,0 +1,116 @@
+.section {
+  position: relative;
+  min-height: calc(100vh - 164px);
+  padding: 20px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 0;
+}
+
+.section__title {
+  font-family: var(--font-family-title);
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+.section__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  width: 100px;
+  height: 40px;
+  background: inherit;
+  border: 1px solid var(--hover-color);
+  border-radius: 6px;
+  color: var(--hover-color);
+  font-family: inherit;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background: var(--hover-color);
+  color: var(--color-bg);
+}
+
+.btn-load {
+  display: block;
+  margin: 0 auto;
+}
+
+.sort-wrapper {
+  padding: 5px 10%;
+}
+
+.sort-wrapper > *{
+  flex: 1;
+}
+
+.btn-sort {
+  background: none;
+  border: none;
+  font-family: inherit;
+  border-bottom: 2px solid transparent;
+  color:#939393;
+  transition: all 0.3s ease-in-out;
+  padding-bottom: 5px;
+}
+
+.btn-sort:first-child {
+  flex: 1.5;
+}
+
+.btn-sort:hover {
+  border-bottom: 2px solid var(--hover-color);
+}
+
+@media screen and (max-width: 992px) {
+  .btn-sort:nth-child(4) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sort-wrapper {
+    padding: 5px 25px 5px 90px;
+  }
+}
+
+@media screen and (max-width: 685px) {
+  .btn-sort:nth-child(5) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .section {
+    min-height: calc(100vh - 188px);
+  }
+  .input.filter-input {
+    align-self: flex-end;
+  }
+  .sort-wrapper {
+    padding: 5px 20px 5px 35px;
+  }
+  .btn-sort:first-child {
+    flex: 1;
+  }
+  .section__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
+
+.watchlist-page .coins-list {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.watchlist-page .coins-list::before {
+  content: none !important;
+}

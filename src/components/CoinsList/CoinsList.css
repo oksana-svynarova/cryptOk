@@ -1,0 +1,27 @@
+.coins-list {
+  padding: 5px 10px;
+  position: relative;
+  height: calc(100vh - 350px);
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.coins-list::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 30px;
+  border-radius: 15px;
+  background: linear-gradient(180deg, transparent 0%, var(--color-bg) 100%);
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.loading-item, .filter-item {
+  text-align: center;
+  padding: 5rem;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+}
