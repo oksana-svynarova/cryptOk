@@ -7,7 +7,7 @@ function News() {
       <h2 className="section__title">News</h2>
       <div className="error-wrapper">
         <p className="error__text_big">
-          Whoops! Page Not Found
+          Whoops! Page Not Found.
         </p>
         <div className="error__title">
           <svg className="error__icon" width="220" height="289" viewBox="0 0 220 289">

@@ -115,4 +115,10 @@ color: var(--text-color-rising);
   .coin-info__value {
     font-size: 20px;
   }
+  .change-amount {
+    font-size: 14px;
+  }
+  .coin-info_addition {
+    justify-content: center;
+  }
 }

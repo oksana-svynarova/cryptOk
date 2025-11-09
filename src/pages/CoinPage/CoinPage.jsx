@@ -71,7 +71,12 @@ function CoinPage() {
                 <ArrowFalling className="change-icon" width={9} height={10} />
               )}
               {Math.abs(coin.price_change_percentage_24h?.toFixed(2)) ?? "0.00"}%
-              <span className="change-amount">({coin.price_change_24h?.toFixed(2)} $)</span>
+              <span className="change-amount">({
+                (coin.price_change_24h > 0 && coin.price_change_24h < 0.0001)
+                ? coin.price_change_24h?.toExponential(3)
+                : coin.price_change_24h?.toFixed(2)
+                ?? "0.00"
+              } $)</span>
             </p>
           </div>
         </div>
